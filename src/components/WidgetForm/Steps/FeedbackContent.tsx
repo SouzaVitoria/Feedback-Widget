@@ -1,5 +1,6 @@
 import Header from "../Header";
 import { FeedbackType, feedbackTypes } from "../WidgetForm";
+import FeedbackContentForm from "./FeedbackContentForm";
 
 interface FeedbackContentProps {
   feedbackType: FeedbackType;
@@ -19,7 +20,7 @@ export default function FeedbackContent({
         image={feedbackTypeInfo.image}
         onFeedbackRestartRequested={onFeedbackRestartRequested}
       />
-      <h1> Content </h1>
+      <FeedbackContentForm />
     </>
   );
 }
