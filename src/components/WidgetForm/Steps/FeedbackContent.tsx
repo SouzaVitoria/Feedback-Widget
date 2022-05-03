@@ -1,6 +1,6 @@
 import Header from "../Header";
 import { FeedbackType, feedbackTypes } from "../WidgetForm";
-import FeedbackContentForm from "./FeedbackContentForm";
+import FeedbackContentForm from "./FeedbackContentForm/FeedbackContentForm";
 
 interface FeedbackContentProps {
   feedbackType: FeedbackType;
