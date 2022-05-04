@@ -2,13 +2,19 @@ import { FormEvent } from "react";
 import { useState } from "react";
 import ScreenshotButton from "./ScreenshotButton";
 
-export default function FeedbackContentForm() {
+interface FeedbackContentFormProps {
+  onFeedbackSent: () => void;
+}
+
+export default function FeedbackContentForm({
+  onFeedbackSent,
+}: FeedbackContentFormProps) {
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [comment, setComment] = useState<string>("");
 
   const handleSubmitFeedback = (e: FormEvent) => {
     e.preventDefault();
-    console.log(screenshot, comment);
+    onFeedbackSent();
   };
 
   return (

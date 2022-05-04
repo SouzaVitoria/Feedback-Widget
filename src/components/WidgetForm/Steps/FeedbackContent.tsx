@@ -5,11 +5,13 @@ import FeedbackContentForm from "./FeedbackContentForm/FeedbackContentForm";
 interface FeedbackContentProps {
   feedbackType: FeedbackType;
   onFeedbackRestartRequested: () => void;
+  onFeedbackSent: () => void;
 }
 
 export default function FeedbackContent({
   feedbackType,
   onFeedbackRestartRequested,
+  onFeedbackSent,
 }: FeedbackContentProps) {
   const feedbackTypeInfo = feedbackTypes[feedbackType];
 
@@ -20,7 +22,7 @@ export default function FeedbackContent({
         image={feedbackTypeInfo.image}
         onFeedbackRestartRequested={onFeedbackRestartRequested}
       />
-      <FeedbackContentForm />
+      <FeedbackContentForm onFeedbackSent={onFeedbackSent} />
     </>
   );
 }

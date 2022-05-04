@@ -2,8 +2,8 @@ import { Popover } from "@headlessui/react";
 import { ArrowLeft, X } from "phosphor-react";
 
 interface HeaderProps {
-  initialStep?: boolean;
-  title: string;
+  notBackIcon?: boolean;
+  title?: string;
   image?: {
     source: string;
     alt: string;
@@ -12,14 +12,14 @@ interface HeaderProps {
 }
 
 export default function Header({
-  initialStep,
+  notBackIcon,
   title,
   image,
   onFeedbackRestartRequested,
 }: HeaderProps) {
   return (
     <header>
-      {!initialStep && (
+      {!notBackIcon && (
         <button
           onClick={onFeedbackRestartRequested}
           className="top-5 left-5 absolute text-zinc-400 hover:text-zinc-100"
