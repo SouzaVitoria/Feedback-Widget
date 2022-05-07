@@ -22,7 +22,10 @@ export default function FeedbackContent({
         image={feedbackTypeInfo.image}
         onFeedbackRestartRequested={onFeedbackRestartRequested}
       />
-      <FeedbackContentForm onFeedbackSent={onFeedbackSent} />
+      <FeedbackContentForm
+        onFeedbackSent={onFeedbackSent}
+        feedbackType={feedbackType}
+      />
     </>
   );
 }
