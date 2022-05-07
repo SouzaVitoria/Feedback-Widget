@@ -12,10 +12,18 @@ import Button from "../Button/Button";
 
 interface FormProps {
   feedbackType: FeedbackType;
+  onFeedbackCanceled: () => void;
+  onFeedbackSent: (feedback: boolean) => void;
 }
 
-export default function Form({ feedbackType }: FormProps) {
+export default function Form({
+  feedbackType,
+  onFeedbackCanceled,
+  onFeedbackSent,
+}: FormProps) {
   const [screenshot, setScreenshot] = useState<string | null>(null);
+  const [isSendingFeedback, setIsSendingFeedback] = useState(false);
+
   const feedbackTypeInfo = feedbackTypes[feedbackType];
 
   function handleScreenshot() {
@@ -31,7 +39,7 @@ export default function Form({ feedbackType }: FormProps) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onFeedbackCanceled}>
           <ArrowLeft
             size={24}
             weight="bold"
@@ -48,6 +56,7 @@ export default function Form({ feedbackType }: FormProps) {
         style={styles.input}
         placeholder="Conte com detalhes o que está acontecendo..."
         placeholderTextColor={theme.colors.text_secondary}
+        autoCorrect={false}
       />
       <View style={styles.footer}>
         <ScreenshotButton
@@ -55,7 +64,10 @@ export default function Form({ feedbackType }: FormProps) {
           onRemoveShot={handleScreenshotRemove}
           screenshot={screenshot}
         />
-        <Button isLoading={false} />
+        <Button
+          isLoading={isSendingFeedback}
+          onPress={() => onFeedbackSent(true)}
+        />
       </View>
     </View>
   );
