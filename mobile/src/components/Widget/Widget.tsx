@@ -26,7 +26,7 @@ function Widget() {
       </TouchableOpacity>
       <BottomSheet
         ref={bottomSheetRef}
-        snapPoints={[1, 280]}
+        snapPoints={[1, 290]}
         backgroundStyle={styles.modal}
         handleIndicatorStyle={styles.indicator}
       >
