@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, TextInput, Image, Text, TouchableOpacity } from "react-native";
 import { ArrowLeft } from "phosphor-react-native";
 import { captureScreen } from "react-native-view-shot";
+import * as FileSystem from "expo-file-system";
 
 import { styles } from "./styles";
 import { theme } from "../../theme";
@@ -9,11 +10,12 @@ import { feedbackTypes } from "../../utils/feedbackTypes";
 import { FeedbackType } from "../Widget/Widget";
 import ScreenshotButton from "../ScreenshotButton/ScreenshotButton";
 import Button from "../Button/Button";
+import { api } from "../../libs/api";
 
 interface FormProps {
   feedbackType: FeedbackType;
   onFeedbackCanceled: () => void;
-  onFeedbackSent: (feedback: boolean) => void;
+  onFeedbackSent: () => void;
 }
 
 export default function Form({
@@ -23,17 +25,43 @@ export default function Form({
 }: FormProps) {
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [isSendingFeedback, setIsSendingFeedback] = useState(false);
+  const [comment, setComment] = useState("");
 
   const feedbackTypeInfo = feedbackTypes[feedbackType];
 
   function handleScreenshot() {
-    captureScreen({ format: "png", quality: 0.1 })
+    captureScreen({ format: "jpg", quality: 0.1 })
       .then(uri => setScreenshot(uri))
       .catch(error => console.log(error));
   }
 
   function handleScreenshotRemove() {
     setScreenshot(null);
+  }
+
+  async function handleSendFeedback() {
+    if (isSendingFeedback) {
+      return;
+    }
+
+    setIsSendingFeedback(true);
+
+    const screenshotBase64 =
+      screenshot &&
+      (await FileSystem.readAsStringAsync(screenshot, { encoding: "base64" }));
+
+    try {
+      await api.post("/feedbacks", {
+        type: feedbackType,
+        screenshot: `data:image/png;base64, ${screenshotBase64}`,
+        comment,
+      });
+
+      onFeedbackSent();
+    } catch (error) {
+      console.log(error);
+      setIsSendingFeedback(false);
+    }
   }
 
   return (
@@ -57,6 +85,7 @@ export default function Form({
         placeholder="Conte com detalhes o que está acontecendo..."
         placeholderTextColor={theme.colors.text_secondary}
         autoCorrect={false}
+        onChangeText={setComment}
       />
       <View style={styles.footer}>
         <ScreenshotButton
@@ -64,10 +93,7 @@ export default function Form({
           onRemoveShot={handleScreenshotRemove}
           screenshot={screenshot}
         />
-        <Button
-          isLoading={isSendingFeedback}
-          onPress={() => onFeedbackSent(true)}
-        />
+        <Button isLoading={isSendingFeedback} onPress={handleSendFeedback} />
       </View>
     </View>
   );
