@@ -1,8 +1,8 @@
 # Feedback Widget
 
-![Feedback Widget](./images/widget.png)
-
 É um widget de feedback que fica no canto inferior direito do site. Esse projeto é uma aplicação que pode ser utilizada em qualquer outro projeto.
+
+![Feedback Widget](./images/widget.png)
 
 ---
 
@@ -18,13 +18,13 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ---
 
-## Como executar
+## 💻 Como executar
 
 - Clone o repositório
 - Entre nas pastas (web / server / mobile) e instale as dependências utilizando `npm install`
   > Não se esqueça de que para o **mobile** e **frontend** funcionar e enviar corretamente o feedback, o **backend** precisa estar rodando.
 
-### **Frontend**
+### 🖥 **Frontend**
 
 - Entre na pasta **web**
 - Rode o comando `npm run dev`
@@ -35,16 +35,16 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Rode o comando `npm run dev`
 - **Prisma:** Rode `npx prisma studio` e será aberto uma interface para navegar nas tabelas do BD;
 
-### **Mobile**
+### 📱 **Mobile**
 
 - Entre na pasta **mobile**
 - Rode o comando `npm start` ou `expo start`
 
 ---
 
-## Ferramentas, Bibliotecas e Pacotes
+## 📚 Ferramentas, Bibliotecas e Pacotes
 
-### **Frontend**
+### 🖥 **Frontend**
 
 - **Vite:** é uma ferramenta que converte o código para um formato que todos os browsers entendam, ou seja, permite que o navegador entenda o JS mais moderno.
 
@@ -65,7 +65,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - **Tirar print da tela (Screenshot):** `html2canvas`
 
-### **Backend**
+### ⚙ **Backend**
 
 - `ts-node-dev`: pacote integrado com TS, quando houver qualquer alteração em algum arquivo, reinicia o servidor automaticamente (faz o mesmo que o Nodemon)
 
@@ -90,7 +90,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - **Testes unitários (Jest):** é um framework de testes
   > Para ter arquivos de configuração do Jest que seja TS, precisa instalar `ts-node` > **SWC**: O Jest por padrão, só entende arquivos JS, então precisamos permitir que o Jest entenda arquivos TS, utilizando o `@swc/jest` (`ts-jest` e `babel` também são compiladores JS, mas são bem lentos em comparação ao `swc`)
 
-### **Mobile**
+### 📱 **Mobile**
 
 - **Expo:** SDK com um conjunto de funcionalidades prontas para usar (câmera, vídeo, integrações, etc).
 
@@ -117,7 +117,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ---
 
-## Extensões do VSCode
+## 📚 Extensões do VSCode
 
 - Code Spell Checker
 - ESLint
@@ -125,7 +125,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Prisma
 - Rest Client / Insomnia / Postman
 
-## Deploies
+## ✨ Deploies
 
 - Frontend: [Vercel](https://vercel.com/)
 - Backend:
