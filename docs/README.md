@@ -1,6 +1,6 @@
 # Feedback Widget
 
-![Feedback Widget](./docs/images/widget.png)
+![Feedback Widget](./images/widget.png)
 
 É um widget de feedback que fica no canto inferior direito do site. Esse projeto é uma aplicação que pode ser utilizada em qualquer outro projeto.
 
@@ -124,3 +124,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Tailwind CSS IntelliSense
 - Prisma
 - Rest Client / Insomnia / Postman
+
+## Deploies
+
+- Frontend: [Vercel](https://vercel.com/)
+- Backend:
+  - [Railway](https://railway.app/)
+  - [Heroku](https://www.heroku.com/)
