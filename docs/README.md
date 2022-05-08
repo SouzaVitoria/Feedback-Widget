@@ -29,7 +29,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Entre na pasta **web**
 - Rode o comando `npm run dev`
 
-### **Backend**
+### ⚙ **Backend**
 
 - Entre na pasta **server**
 - Rode o comando `npm run dev`
